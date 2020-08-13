@@ -1,12 +1,12 @@
 <template>
   <button
     class="lyh-button"
-    :class="[`lyh-button--${type}`,{'is-plain':plain,'is-circle':circle,'is-round':round,'is-disabled':disabled}]"
+    :class="[`lyh-button--${type}`,`lyh-button-${size}`,{'is-plain':plain,'is-circle':circle,'is-round':round,'is-disabled':disabled}]"
     :disabled="disabled"
     @click="handleclick"
   >
     <i v-if="icon" :class="icon"></i>
-    <span v-if="$slots.default">
+    <span v-if="$slots.default" :class="{'current':icon}">
       <slot></slot>
     </span>
   </button>
@@ -22,7 +22,8 @@ export default {
     round: { type: Boolean, default: false },
     circle: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
-    icon: { type: String, default: "" }
+    icon: { type: String, default: "" },
+    size: { type: String, default:"medium" }
   },
   created() {
     console.log(this.disabled);
@@ -56,6 +57,22 @@ export default {
   padding: 12px 20px;
   font-size: 14px;
   border-radius: 4px;
+  font-family: "微软雅黑";
+  &-medium {
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  &-small {
+    padding: 9px 15px;
+    font-size: 12px;
+    border-radius: 3px;
+  }
+   &-mini {
+    padding: 7px 15px;
+    font-size: 12px;
+    border-radius: 3px;
+  }
   &:hover,
   &:focus {
     color: #409eff;
@@ -257,7 +274,7 @@ export default {
     padding: 12px;
   }
 }
-.lyh-button span {
+.lyh-button span.current {
   margin-left: 5px;
 }
 .is-disabled {

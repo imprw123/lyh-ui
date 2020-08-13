@@ -1,24 +1,24 @@
 <template >
-<transition name="dialog-fade">
-     <div class="lyh-dialog__wrapper" v-show="visible" @click.self="handleClose">
-    <div class="lyh-dialog" :style="{width:width,marginTop:top}">
-      <div class="lyh-dialog__header">
-        <slot name="title">
+  <transition name="dialog-fade">
+    <div class="lyh-dialog__wrapper" v-show="visible" @click.self="handleClose">
+      <div class="lyh-dialog" :style="{width:width,marginTop:top}">
+        <div class="lyh-dialog__header">
+          <slot name="title">
             <span class="lyh-dialog__title">{{title}}</span>
-        </slot>
-        <button class="lyh-dialog__headerbtn" @click="handleClose">
-          <i class="lyh-icon-close"></i>
-        </button>
-      </div>
-      <div class="lyh-dialog__body">
-            <slot></slot>
-      </div>
-      <div class="lyh-dialog__footer" v-if="$slots.footer">
-       <slot name="footer"></slot>
+          </slot>
+          <button class="lyh-dialog__headerbtn" @click="handleClose">
+            <i class="lyh-icon-close"></i>
+          </button>
+        </div>
+        <div class="lyh-dialog__body">
+          <slot></slot>
+        </div>
+        <div class="lyh-dialog__footer" v-if="$slots.footer">
+          <slot name="footer"></slot>
+        </div>
       </div>
     </div>
-  </div>
-</transition>
+  </transition>
 </template>
 
 
@@ -27,14 +27,14 @@ export default {
   name: "LyhDialog",
   props: {
     title: { type: String, default: "提示" },
-    width:{type:String,default:'50%'},
-    top:{type:String,default:'15vh'},
-    visible:{type:Boolean,default:false}
+    width: { type: String, default: "50%" },
+    top: { type: String, default: "15vh" },
+    visible: { type: Boolean, default: false }
   },
-  methods:{
-      handleClose(){
-          this.$emit('update:visible',false)
-      }
+  methods: {
+    handleClose() {
+      this.$emit("update:visible", false);
+    }
   }
 };
 </script>

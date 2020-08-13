@@ -3,13 +3,15 @@ import Dialog from './dialog.vue'
 import Input from './input.vue'
 import Switch from './switch.vue'
 import Radio from './radio.vue'
+import TableList from './tableList.vue'
 import './fonts/font.scss'
 const components = [
     Button,
     Dialog,
     Input,
     Switch,
-    Radio
+    Radio,
+    TableList
 ]
 const install = function(Vue) {
     //注册所有组件
